@@ -1,0 +1,318 @@
+@mixin medium {
+  @media (max-width: 960px) {
+    @content;
+  }
+}
+
+@mixin breakpoint {
+  @media (max-width: 665px) {
+    @content;
+  }
+}
+
+@mixin small {
+  @media (max-width: 480px) {
+    @content;
+  }
+}
+
+@mixin x-small {
+  @media (max-width: 360px) {
+    @content;
+  }
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.notification-panel {
+  padding: 1rem;
+  background: #e5e5e5;
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  transition: top 400ms ease-in-out;
+  width: 100%;
+  box-shadow: 1px 0px 5px grey;
+  &-content {
+    max-width: 720px;
+    margin: 0 auto;
+    display: flex;
+    color: #4e4e4e;
+    @include breakpoint {
+      display: grid;
+      width: 100%;
+      font-size: 0.8rem;
+    }
+    @include small {
+      width: 100%;
+      font-size: 0.8rem;
+      display: grid;
+    }
+    button {
+      width: 100px;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 2px;
+      background: #007bc1;
+      color: #fff;
+      margin-left: 1rem;
+      font-size: 0.9rem;
+      cursor: pointer;
+      @include breakpoint {
+        margin-left: 0;
+        margin-top: 1rem;
+        width: 80px;
+      }
+      @include small {
+        margin-left: 0;
+        margin-top: 1rem;
+        width: 80px;
+      }
+    }
+  }
+}
+
+.body-container {
+  max-width: 1366px;
+  margin: 0 auto;
+  position: relative;
+  top: 70px;
+  transition: top 400ms ease-in-out;
+  @include breakpoint {
+    top: 110px;
+  }
+  @include x-small {
+    top: 126px;
+  }
+  .page-header {
+    width: 100%;
+    position: relative;
+    img {
+      width: 100%;
+      height: auto;
+      vertical-align: middle;
+      @include breakpoint {
+        height: 400px;
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+    .page-header-blue {
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: rgba(0, 112, 255, 0.4);
+      width: 100%;
+      height: 100%;
+    }
+    .logo {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      width: 30px;
+      height: auto;
+    }
+    .hero-shot {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: #fff;
+
+      @include medium {
+        width: 60%;
+      }
+      @include small {
+        width: 62%;
+      }
+      h2 {
+        font-weight: 300;
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        @include breakpoint {
+          font-size: 2rem;
+        }
+        @include small {
+          font-size: 1.5rem;
+        }
+      }
+      h3 {
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+        @include breakpoint {
+          font-size: 1rem;
+        }
+      }
+      p {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+        @include breakpoint {
+          font-size: 1rem;
+        }
+      }
+      button {
+        border: 1px solid #fff;
+        border-radius: 2px;
+        padding: 0.5rem 1rem;
+        background: none;
+        color: #fff;
+        font-size: 1rem;
+        margin-top: 0.5rem;
+        cursor: pointer;
+        &:hover {
+          background: #fff;
+          color: #007bc1;
+        }
+      }
+    }
+  }
+
+  .highlight-panel {
+    padding: 3rem 2rem;
+    background: #e5e5e5;
+    h3 {
+      text-align: center;
+      font-weight: 300;
+      font-size: 2rem;
+      color: #4e4e4e;
+      @include breakpoint {
+        font-size: 1.5rem;
+      }
+    }
+    .paragraph {
+      font-weight: 400;
+      color: grey;
+      width: 550px;
+      margin: 0 auto;
+      text-align: center;
+      line-height: 1.5;
+      margin-top: 1rem;
+      @include breakpoint {
+        width: auto;
+      }
+    }
+    .panel-tiles {
+      margin-top: 3rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-gap: 2rem;
+      @include medium {
+        grid-template-columns: 1fr 1fr;
+      }
+      @include small {
+        grid-template-columns: 1fr;
+      }
+      .tiles-item {
+        border: 1px solid #ababab;
+        padding: 1.5rem;
+        .paragraph-tile {
+          font-weight: 300;
+          color: #4e4e4e;
+        }
+        .paragraph-title {
+          font-weight: 300;
+          color: grey;
+          font-size: 0.9rem;
+          line-height: 1.5;
+        }
+        .tiles-item-title {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 1rem;
+          i {
+            font-size: 1.7rem;
+            color: grey;
+          }
+        }
+      }
+    }
+  }
+
+  footer {
+    padding: 2rem 0;
+    background: #220627;
+    p {
+      text-align: center;
+      color: #fff;
+    }
+  }
+}
+
+.newsletter-panel {
+  width: 100%;
+  position: fixed;
+  bottom: -100%;
+  left: 0;
+  z-index: 3;
+  transition: bottom 400ms ease-in-out;
+  .panel-wrapper {
+    max-width: 1366px;
+    margin: 0 auto;
+    .panel-content {
+      max-width: 640px;
+      background: rgba(0, 133, 243, 0.9);
+      position: relative;
+      color: #fff;
+      padding: 1.5rem;
+      .close {
+        position: absolute;
+        top: 0.5rem;
+        right: 0.5rem;
+        color: #fff;
+        cursor: pointer;
+      }
+      h2 {
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+      }
+      p {
+        font-weight: 300;
+        line-height: 1.5;
+      }
+      form {
+        margin-top: 1rem;
+        display: flex;
+        justify-content: space-between;
+        @include small {
+          display: block;
+          width: 100%;
+        }
+        input {
+          width: 100%;
+          padding: 0.5rem;
+          border: none;
+          font-size: 0.9rem;
+        }
+        button {
+          margin-left: 1rem;
+          width: 150px;
+          padding: 0.5rem 0;
+          border: none;
+          color: #fff;
+          border-radius: 3px;
+          background: #ff8000;
+          font-weight: bold;
+          cursor: pointer;
+          font-size: 0.9rem;
+          @include small {
+            margin-left: 0;
+            width: 100%;
+            margin-top: 1rem;
+          }
+          &:hover {
+            background: ​#cc6600;
+          }
+        }
+      }
+    }
+  }
+}
